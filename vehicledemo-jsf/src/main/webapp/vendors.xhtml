@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Vendors</h1>
+		<h:form>
+			<table styleClass="simpletablestyle">
+				<tr>
+					<td><h:commandLink action="vehicles" value="Open Vehicles" />
+					</td>
+					<td><h:commandLink action="engines" value="Open Engines" /></td>
+				</tr>
+			</table>
+		</h:form>
+		<h:dataTable var="v" value="#{vendors}"
+			rendered="#{not empty vendors}" styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+                #{v.id}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+                #{v.name}
+            </h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>

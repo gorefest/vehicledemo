@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Vendors</h1>
+		<h:form>
+			<table styleClass="simpletablestyle">
+				<tr>
+					<td><h:commandLink action="vehiclesList" value="Open Vehicles" />
+					</td>
+					<td><h:commandLink action="enginesList" value="Open Engines" /></td>
+				</tr>
+			</table>
+		</h:form>
+
+		<h:form>
+			<h:messages styleClass="messages" errorClass="invalid"
+				infoClass="valid" warnClass="warning" globalOnly="true" />
+			<h:panelGrid columns="2" class="simpletablestyle">
+				<h:outputText value="Model" />
+				<h:inputText value="#{newVehicle.modelName}" />
+
+				<h:outputText value="Init Registration Date" />
+				<h:panelGroup >
+					<h:inputText id="datum" value="#{newVehicle.initialRegistrationDate}" />				
+					<h:message for="datum"/>
+				</h:panelGroup>
+                <h:outputText value="Vehicle Identification Number" />
+                <h:inputText value="#{newVehicle.fgnr}" />
+
+                <h:outputText value="Vehicle Price" />
+                <h:inputText value="#{newVehicle.price}" />
+
+				<h:outputText value="Vendor" />
+				<h:selectOneMenu value="#{vehicleController.vendorName}">
+					<f:selectItems value="#{vendors}" var="v" itemLabel="#{v.name}"
+						itemValue="#{v.name}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Engine" />
+				<h:selectOneMenu value="#{vehicleController.engineId}">
+					<f:selectItems value="#{engines}" var="v" itemLabel="#{v.engineId}"
+						itemValue="#{v.engineId}" />
+				</h:selectOneMenu>
+
+				<f:facet name="footer">
+					<h:commandButton action="#{vehicleController.saveNewVehicle()}"
+						value="save" />
+				</f:facet>
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

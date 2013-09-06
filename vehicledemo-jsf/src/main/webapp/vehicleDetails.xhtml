@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Vehicle Details</h1>
+		<h:form>
+			<table styleClass="simpletablestyle">
+				<tr>
+					<td><h:commandLink action="vehicles" value="Open Vehicles" />
+					</td>
+					<td><h:commandLink action="engines" value="Open Engines" /></td>
+				</tr>
+			</table>
+		</h:form>
+		
+		<ui:param name="currentVehicle" value="#{currentVehicleProducer.currentVehicle}" />
+
+		<table class="simpletablestyle">
+			<tr>
+				<th rowspan="2">Vehicle</th>
+				<td colspan="2">#{currentVehicle.vendor.name}</td>
+			</tr>
+			<tr>
+				<td colspan="2">#{currentVehicle.modelName}</td>
+			</tr>		
+				
+			<tr>
+				<th rowspan="2">Basics</th>
+				<td colspan="2">#{currentVehicle.initialRegistrationDate}</td>
+			</tr>	
+			
+			<tr>
+				<td colspan="2">#{currentVehicle.fgnr}</td>
+			</tr>
+				
+			<tr>
+				<th rowspan="4">Engine</th>
+				<td>Type</td>
+				<td>#{currentVehicle.engine.engineType}</td>
+			</tr>
+			
+			<tr>
+				<td>KW</td>
+				<td>#{currentVehicle.engine.kw}</td>
+			</tr>
+			<tr>
+				<td>Cylinder Capacity</td>
+				<td>#{currentVehicle.engine.ccm}</td>
+			</tr>
+			<tr>
+				<td>Cylinders</td>
+				<td>#{currentVehicle.engine.cylinders}</td>
+			</tr>
+						
+		</table>
+
+
+
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,23 @@
+vendor:
+ - id: 666
+   name: Badass Motor Company
+ - id: 4711
+   name: Dacia
+   
+engine:
+ - id: 2001
+   ccm: 1000000
+   kw: 100000
+   vendor_id: 666
+   engine_id: 123/123/666
+   enginetype: 1
+
+vehicle:
+ - id: 667
+   engine_id: 2001
+   vendor_id: 666
+   price: 1000000.0
+   fgnr: BADAS66666666
+   modelname: Brtzlfx 1000
+   initialregistrationdate: 10/10/2012
+         

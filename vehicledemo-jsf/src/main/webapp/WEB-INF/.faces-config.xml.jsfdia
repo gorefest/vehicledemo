@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#vehicles.xhtml" PATH="/vehicles.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vehicles.xhtml:0" NAME="item"
+   PATH="/vehicles.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="enginesList::#engines.xhtml" NAME="output1"
+    PATH="/engines.xhtml" SHAPE="-1,16" TARGET="rules:#engines.xhtml"
+    TITLE="enginesList" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="vendorsList::#vendors.xhtml" NAME="output"
+    PATH="/vendors.xhtml" SHAPE="-1,16" TARGET="rules:#vendors.xhtml"
+    TITLE="vendorsList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendors.xhtml" PATH="/vendors.xhtml"
+  SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vendors.xhtml:0" NAME="item"
+   PATH="/vendors.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="enginesList::#engines.xhtml" NAME="output"
+    PATH="/engines.xhtml" SHAPE="-1,16" TARGET="rules:#engines.xhtml"
+    TITLE="enginesList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#engines.xhtml" PATH="/engines.xhtml"
+  SHAPE="288,80,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#engines.xhtml:0" NAME="item"
+   PATH="/engines.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="vehiclesList::#vehicles.xhtml" NAME="output"
+    PATH="/vehicles.xhtml" SHAPE="-1,16" TARGET="rules:#vehicles.xhtml"
+    TITLE="vehiclesList" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="vendorsList::#vendors.xhtml" NAME="output1"
+    PATH="/vendors.xhtml" SHAPE="-1,16" TARGET="rules:#vendors.xhtml"
+    TITLE="vendorsList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
