@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Vehicles</h1>
+
+		<h:form>
+			<table styleClass="simpletablestyle">
+				<tr>
+					<td><h:commandLink action="vendors" value="Open Vendors" />
+					</td>
+					<td><h:commandLink action="engines" value="Open Engines" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+		<h:form>
+			<h:inputText value="#{vehicleSearchController.term}" />
+			<h:commandButton action="#{vehicleSearchController.search()}" value="GOGOGOGOGO" />
+			
+			<h:dataTable var="v" value="#{vehicleSearchController.result}"
+				rendered="#{not empty vehicleSearchController.result}" styleClass="simpletablestyle">
+				<h:column>
+					<f:facet name="header">FGNR</f:facet>
+                #{v.fgnr}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Vendor</f:facet>
+                #{v.vendor.name}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Model</f:facet>
+          
+                <h:commandLink action="#{currentVehicleProducer.rememberCurrentVehicle(v)}" value="#{v.modelName}"/>
+                
+                
+            </h:column>
+				<h:column>
+					<f:facet name="header">EngineType</f:facet>
+                #{v.engine.engineType}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Power</f:facet>
+                #{v.engine.kw}
+            </h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
