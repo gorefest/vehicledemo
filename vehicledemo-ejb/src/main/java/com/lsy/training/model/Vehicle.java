@@ -20,6 +20,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.search.annotations.Boost;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+
 /**
  * Fahrzeug-Entity
  *
@@ -33,6 +39,7 @@ import javax.validation.constraints.Size;
       , query="SELECT o FROM Vehicle o JOIN FETCH o.engine JOIN FETCH o.vendor")
 })
 @Entity
+@Indexed
 public class Vehicle extends AbstractEntity implements Identifiable{
 
 	
@@ -40,6 +47,7 @@ public class Vehicle extends AbstractEntity implements Identifiable{
 	public static final String LOAD_ALL_COMPLETELY ="Vehicle.loadAllCompletely";
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@DocumentId
 	private Long id;
 	
 	@Version
@@ -54,16 +62,20 @@ public class Vehicle extends AbstractEntity implements Identifiable{
 	
 	@NotNull
 	@Size(max=30)
+	@Field
+	@Boost(5.0f)
 	private String modelName;
 	
 	@ManyToOne(optional=false)
 	@NotNull
 	@Valid
+	@IndexedEmbedded
     Vendor vendor;
 	
 	@ManyToOne(optional=false)
 	@NotNull
 	@Valid
+	@IndexedEmbedded
 	Engine engine;
 	
 	@NotNull

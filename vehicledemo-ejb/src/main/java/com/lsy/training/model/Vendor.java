@@ -13,6 +13,10 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import com.lsy.training.constraints.Case;
 import com.lsy.training.constraints.Case.CaseType;
 
@@ -46,6 +50,7 @@ import com.lsy.training.constraints.Case.CaseType;
 			"WHERE m.maintenanceType = :foo")
 	}	)
 
+@Indexed
 public class Vendor extends AbstractEntity implements Identifiable, Nameable {
 
 	public static final String GET_BY_NAME="Vendor.getByName";
@@ -55,11 +60,13 @@ public class Vendor extends AbstractEntity implements Identifiable, Nameable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@DocumentId
 	Long id;
 	
 	@NotNull
 	@Size(max=30)
 	@Case(CaseType.UPPERCASE)
+	@Field
 	String name;
 	
 	@Temporal(TemporalType.DATE)

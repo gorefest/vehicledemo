@@ -18,10 +18,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
-
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 /**
  * Engine Entity
@@ -35,12 +39,14 @@ import javax.validation.constraints.Pattern;
 				,query="SELECT o FROM Engine o WHERE o.engineId = :engineId")
 	
 }	)
+@Indexed
 public class Engine extends AbstractEntity implements Identifiable{
 
 	public static final String GET_BY_ENGINE_ID="Engine.getByEngineId";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@DocumentId
 	Long id;
 	
 	@Version    // Versionsfield für optmistic Locking in der DB, braucht keine getter/setter
@@ -57,6 +63,7 @@ public class Engine extends AbstractEntity implements Identifiable{
 	}
 
 	@Enumerated(EnumType.ORDINAL)
+	@Field
 	EngineType engineType;
 	
 	@NotNull
@@ -78,6 +85,7 @@ public class Engine extends AbstractEntity implements Identifiable{
 	Date lastModified;
 	
 	@ManyToOne
+	@IndexedEmbedded
     Vendor vendor;
 
 	public Engine() {
