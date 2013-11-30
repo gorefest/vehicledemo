@@ -47,15 +47,19 @@ public class VehicleService {
 		Engine e3 = engineDao.getByEngineId("3/2/3");
 		Engine e4 = engineDao.getByEngineId("4/2/3");
 		
-		Vehicle v1 = new Vehicle("WWAUZ12345678","A4",m1,e1,new BigDecimal("36000.0"), new Date());
-		Vehicle v2 = new Vehicle("WWVWZ12345678","GOLF 6",m2,e3,new BigDecimal("25000.0"),new Date());
-		Vehicle v3 = new Vehicle("WWBMW12345678","318i",m4,e2,new BigDecimal("41000.0"),new Date());
-		Vehicle v4 = new Vehicle("WWAUZ12345672","A6",m1,e11,new BigDecimal("68000.0"),new Date());
-		Vehicle v5 = new Vehicle("WWFOR12345672","Fiesta",m3,e4,new BigDecimal("15000.0"),new Date());
+		Vehicle v1 = new Vehicle("WWAUZ12345678","A4",m1,e1,new BigDecimal("36000.0"), new Date(),null);
+		Vehicle v2 = new Vehicle("WWVWZ12345678","GOLF 6",m2,e3,new BigDecimal("25000.0"),new Date(),"nicht BMW");
+		Vehicle v3 = new Vehicle("WWBMW12345678","318i",m4,e2,new BigDecimal("41000.0"),new Date(),"nicht AUDI");
+		Vehicle v31 = new Vehicle("WWBMW12345628","319i",m4,e2,new BigDecimal("41000.0"),new Date(),"nicht AUDI");
+		Vehicle v32 = new Vehicle("WWBMW12345638","320i",m4,e2,new BigDecimal("41000.0"),new Date(),"nicht AUDI");
+		Vehicle v4 = new Vehicle("WWAUZ12345672","A6",m1,e11,new BigDecimal("68000.0"),new Date(),null);
+		Vehicle v5 = new Vehicle("WWFOR12345672","Fiesta",m3,e4,new BigDecimal("15000.0"),new Date(),null);
 	
 		vehicleDao.save(v1);
 		vehicleDao.save(v2);
 		vehicleDao.save(v3);
+		vehicleDao.save(v31);
+		vehicleDao.save(v32);
 		vehicleDao.save(v4);
 		vehicleDao.save(v5);
 		

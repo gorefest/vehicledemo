@@ -34,6 +34,7 @@
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.search.default.indexBase" value="c://indexes/"/>
       </properties>
    </persistence-unit>
 </persistence>

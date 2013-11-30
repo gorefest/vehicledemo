@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import com.lsy.training.dao.SearchDao;
 import com.lsy.training.model.Vehicle;
+import com.lsy.training.service.VehicleSearchService;
 
 @Named
 @RequestScoped
@@ -15,13 +16,16 @@ public class VehicleSearchController {
 
 	@EJB
 	SearchDao searchDao;
+
+	@EJB
+	VehicleSearchService searchService;
 	
 	private String term;
 	private List<Vehicle> result;
 	
 	public void search() {
 		if (term != null && term.trim().length() > 0) {
-			result = searchDao.searchVehicles2(term);
+			result = searchDao.searchVehicles22(term);
 		}
 	}
 
@@ -41,4 +45,8 @@ public class VehicleSearchController {
 		this.result = result;
 	}
 	
+	
+	public void reindex() {
+		searchService.reindexData();
+	}
 }

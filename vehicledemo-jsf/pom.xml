@@ -200,7 +200,6 @@
     
     	<filters>
     		<filter>${build.testSourceDirectory}/../resources/properties/default.properties</filter>
-    		<filter>${build.testSourceDirectory}/../resources/properties/${user.name}.properties</filter>
     	</filters>
     
         <!-- Maven will append the version to the finalName (which is the 

@@ -83,7 +83,7 @@ public class InitializerService {
      * @throws InterruptedException
      * @throws ExecutionException
      */
-	@Schedule(hour="*", minute="*", second="0,15,30,45")
+	// @Schedule(hour="*", minute="*", second="0,15,30,45")
 	public void scheduleOutput() throws InterruptedException, ExecutionException {
 		log.info("BEGIN OUTPUT");
 		

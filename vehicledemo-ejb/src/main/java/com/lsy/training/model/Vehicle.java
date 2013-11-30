@@ -63,7 +63,6 @@ public class Vehicle extends AbstractEntity implements Identifiable{
 	@NotNull
 	@Size(max=30)
 	@Field
-	@Boost(5.0f)
 	private String modelName;
 	
 	@ManyToOne(optional=false)
@@ -85,23 +84,25 @@ public class Vehicle extends AbstractEntity implements Identifiable{
     @Temporal(TemporalType.DATE)
     Date initialRegistrationDate;
 	
+    @Field
+    @Boost(15.0f)
+    String comment;
+    
 	public Vehicle() {
 		
 	}
-	
-	public Vehicle(String fgnr, String modelName, Vendor vendor,
-			Engine engine, BigDecimal price, Date initialRegistrationDate) {
+
+	public Vehicle(String fgnr, String modelName, Vendor vendor, Engine engine,
+			BigDecimal price, Date initialRegistrationDate, String comment) {
 		super();
 		this.fgnr = fgnr;
 		this.modelName = modelName;
 		this.vendor = vendor;
 		this.engine = engine;
 		this.price = price;
-        this.initialRegistrationDate = initialRegistrationDate;
+		this.initialRegistrationDate = initialRegistrationDate;
+		this.comment = comment;
 	}
-
-
-
 	public Vendor getVendor() {
 		return vendor;
 	}
