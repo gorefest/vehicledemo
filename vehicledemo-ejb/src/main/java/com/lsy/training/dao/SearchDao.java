@@ -66,7 +66,7 @@ public class SearchDao {
 
        org.apache.lucene.search.Query query = qb                   // Query aufbauen
                .keyword()                                          // keyword-Suche auf der entity
-               .onFields("fgnr", "modelName","engine.vendor.name", "vendor.name" , "comment")  // Felder
+               .onFields("fgnr", "modelName","engine.vendor.name", "vendor.name" , "comment", "engine.engine_type", "engine.engine_type_int.en")  // Felder
                .ignoreFieldBridge()                                // FieldBridges ignorieren, sonst krachts
                .matching(term)                                     // match angeben
                .createQuery();                                     // Query erzeugen
@@ -87,7 +87,7 @@ public class SearchDao {
 	
 	public List<Vehicle> searchVehicles2(String term) {
 		List<Vehicle> result;
-		String[] fields = new String[]{"fgnr", "modelName","engine.vendor.name", "vendor.name", "comment"};
+		String[] fields = new String[]{"fgnr", "modelName","engine.vendor.name", "vendor.name", "comment", "engine.engine_type"};
 		
 		Map<String,Float> boostPerField = new HashMap<String,Float>();
 		QueryParser parser = new MultiFieldQueryParser(Version.LUCENE_35

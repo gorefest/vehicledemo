@@ -22,10 +22,9 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
+import com.lsy.training.indexing.EngineTypeBridge;
+import com.lsy.training.indexing.EngineTypeFieldBridge;
+import org.hibernate.search.annotations.*;
 
 /**
  * Engine Entity
@@ -51,7 +50,7 @@ public class Engine extends AbstractEntity implements Identifiable{
 	
 	@Version    // Versionsfield für optmistic Locking in der DB, braucht keine getter/setter
 	Long version;
-	
+
 	public static enum EngineType {
 		PETROL,
 		DIESEL,
@@ -63,8 +62,11 @@ public class Engine extends AbstractEntity implements Identifiable{
 	}
 
 	@Enumerated(EnumType.ORDINAL)
-	@Field
-	EngineType engineType;
+	@Fields({
+            @Field(name = "engine_type", bridge = @FieldBridge(impl = EngineTypeBridge.class)),
+            @Field(name = "engine_type_int", bridge = @FieldBridge(impl = EngineTypeFieldBridge.class))
+            })
+    EngineType engineType;
 	
 	@NotNull
 	Double kw;
